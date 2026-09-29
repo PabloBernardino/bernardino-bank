@@ -25,4 +25,12 @@ public class Banco {
             mapClientes.put(cliente.getId(), cliente);
         }
     }
+
+    public Cliente consultarCliente(int id) {
+
+        // Pegue no mapClientes o valor associado à chave id e coloque esse objeto dentro da variável cliente
+        Cliente cliente = mapClientes.get(id);
+
+        return cliente;
+    }
 }

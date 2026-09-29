@@ -20,6 +20,12 @@ public class App {
         banco.cadastrarCliente(cliente); // Banco, cadastre este cliente.
         banco.cadastrarCliente(cliente1);
 
+        Cliente clienteEncontrado = banco.consultarCliente(cliente.getId());
+
+        System.out.println(clienteEncontrado.getNome().toString());
+        System.out.println(clienteEncontrado.getEmail().toString());
+        System.out.println(clienteEncontrado.getId());
+        System.out.println(clienteEncontrado.getTelefone().toString());
 
 
 
