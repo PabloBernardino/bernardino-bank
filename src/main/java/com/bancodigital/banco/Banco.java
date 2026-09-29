@@ -28,9 +28,19 @@ public class Banco {
 
     public Cliente consultarCliente(int id) {
 
-        // Pegue no mapClientes o valor associado à chave id e coloque esse objeto dentro da variável cliente
-        Cliente cliente = mapClientes.get(id);
+        if (mapClientes.containsKey(id)) {
 
-        return cliente;
+            // Procure no mapa o Cliente que possui esse ID e coloque o Cliente encontrado na variável cliente.
+            Cliente cliente = mapClientes.get(id);
+
+            return cliente;
+
+        } else {
+
+            System.out.println("Cliente nao encontrado");
+
+            return null;
+        }
+
     }
 }

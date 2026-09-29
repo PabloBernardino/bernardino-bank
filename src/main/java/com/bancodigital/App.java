@@ -15,6 +15,8 @@ public class App {
         Cliente cliente1 = new Cliente
                 (2, "Jenn", "498.921.418-81", "pablopbernardino@gmail.com", "(11) 949092368");
 
+        Cliente cliente2 = new Cliente(3, "Alailton", "498.921.418-81", "pablopbernardino@gmail.com", "(11) 949092368");
+
         Banco banco = new Banco();
 
         banco.cadastrarCliente(cliente); // Banco, cadastre este cliente.
@@ -26,6 +28,16 @@ public class App {
         System.out.println(clienteEncontrado.getEmail().toString());
         System.out.println(clienteEncontrado.getId());
         System.out.println(clienteEncontrado.getTelefone().toString());
+
+        banco.cadastrarCliente(cliente2);
+
+        clienteEncontrado = banco.consultarCliente(cliente2.getId());
+
+        System.out.println(clienteEncontrado.getNome().toString());
+        System.out.println(clienteEncontrado.getEmail().toString());
+        System.out.println(clienteEncontrado.getId());
+        System.out.println(clienteEncontrado.getTelefone().toString());
+
 
 
 
