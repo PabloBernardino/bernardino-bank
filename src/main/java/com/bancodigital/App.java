@@ -72,6 +72,25 @@ public class App {
         conta.depositar(new BigDecimal("0.00"));
         conta.depositar(new BigDecimal("-500.00"));
 
+        //_____________________________________________________________________________________//
+
+        conta.sacar(new BigDecimal("100.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.sacar(new BigDecimal("2900.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.depositar(new BigDecimal("500.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.sacar(new BigDecimal("501.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.depositar(new BigDecimal("-500.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.sacar(new BigDecimal("0.00"));
+        System.out.println(contaEncontrada.getSaldo());
     }
 }
 
