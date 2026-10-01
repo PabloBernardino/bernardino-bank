@@ -52,19 +52,25 @@ public class App {
         //_________________________________________________________________________________//
 
 
-        BigDecimal saldoInicial = new BigDecimal("10000.00");
+        BigDecimal saldoInicial = new BigDecimal("1000.00");
 
-        Conta contaNova = new Conta
+        Conta conta = new Conta
                 (1, "56886", "0001", saldoInicial, cliente);
 
 
-        banco.cadastrarConta(contaNova);
+        banco.cadastrarConta(conta);
 
-        Conta contaEncontrada = banco.consultarConta(contaNova.getId());
+        Conta contaEncontrada = banco.consultarConta(conta.getId());
 
         System.out.println(contaEncontrada.getId());
-        System.out.println(contaEncontrada.getCliente().toString());
 
+
+
+        conta.depositar(new BigDecimal("2000.00"));
+        System.out.println(contaEncontrada.getSaldo());
+
+        conta.depositar(new BigDecimal("0.00"));
+        conta.depositar(new BigDecimal("-500.00"));
 
     }
 }

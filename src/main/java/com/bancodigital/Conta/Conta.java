@@ -22,10 +22,20 @@ public class Conta {
 
     }
 
-    public int getId() { return id; }
-    public String getNumero() { return numero; }
-    public String getAgencia() { return agencia; }
-    public BigDecimal getSaldo() { return saldo; }
-    public Cliente getCliente() { return cliente; }
+    public int getId() {return id;}
+    public BigDecimal getSaldo() {return saldo;}
+
+    public void depositar(BigDecimal valor) {
+
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+
+            System.out.println("Valor invalido");
+
+        }else  {
+
+            saldo = saldo.add(valor);
+        }
+    }
+
 
 }
