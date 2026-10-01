@@ -1,10 +1,13 @@
 package com.bancodigital;
 
+import com.bancodigital.Conta.Conta;
 import com.bancodigital.banco.Banco;
 import com.bancodigital.cliente.Cliente;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import java.math.BigDecimal;
 
 public class App {
     public static void main(String[] args) {
@@ -17,17 +20,23 @@ public class App {
 
         Cliente cliente2 = new Cliente(3, "Alailton", "498.921.418-81", "pablopbernardino@gmail.com", "(11) 949092368");
 
+        //_____________________________________________________________________________//
         Banco banco = new Banco();
 
         banco.cadastrarCliente(cliente); // Banco, cadastre este cliente.
         banco.cadastrarCliente(cliente1);
 
+        //_____________________________________________________________________________//
         Cliente clienteEncontrado = banco.consultarCliente(cliente.getId());
 
         System.out.println(clienteEncontrado.getNome().toString());
         System.out.println(clienteEncontrado.getEmail().toString());
         System.out.println(clienteEncontrado.getId());
         System.out.println(clienteEncontrado.getTelefone().toString());
+
+        System.out.println();
+
+        //__________________________________________________________________________________//
 
         banco.cadastrarCliente(cliente2);
 
@@ -38,11 +47,27 @@ public class App {
         System.out.println(clienteEncontrado.getId());
         System.out.println(clienteEncontrado.getTelefone().toString());
 
+        System.out.println();
+
+        //_________________________________________________________________________________//
 
 
+        BigDecimal saldoInicial = new BigDecimal("10000.00");
+
+        Conta contaNova = new Conta
+                (1, "56886", "0001", saldoInicial, cliente);
+
+
+        banco.cadastrarConta(contaNova);
+
+        Conta contaEncontrada = banco.consultarConta(contaNova.getId());
+
+        System.out.println(contaEncontrada.getId());
+        System.out.println(contaEncontrada.getCliente().toString());
 
 
     }
 }
+
 
 

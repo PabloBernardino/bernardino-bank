@@ -1,5 +1,6 @@
 package com.bancodigital.banco;
 
+import com.bancodigital.Conta.Conta;
 import com.bancodigital.cliente.Cliente;
 
 import java.util.HashMap;
@@ -43,4 +44,29 @@ public class Banco {
         }
 
     }
+
+    //_________________________________________________________________________________________//
+
+    Map<Integer, Conta> armazenarContas = new HashMap<>();
+
+    public void cadastrarConta(Conta conta) {
+
+        armazenarContas.put(conta.getId(), conta);
+
+    }
+
+    public Conta consultarConta(int id) {
+
+        if (armazenarContas.containsKey(id)) {
+            Conta conta = armazenarContas.get(id);
+            return conta;
+        }else  {
+            System.out.println("Conta nao encontrado");
+            return null;
+        }
+
+    }
+
+
+
 }
