@@ -43,10 +43,53 @@ public class Conta {
             System.out.println("Valor invalido");
         } else if (valor.compareTo(saldo) > 0) {
             System.out.println("Saldo insuficiente");
-        } else
+        } else {
             saldo = saldo.subtract(valor);
-
         }
+
     }
+
+    public void transferir(Conta contaDestino, BigDecimal valor) {
+
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+
+            System.out.println("Valor invalido");
+
+
+        }else if (contaDestino == null) {
+
+            System.out.println("Conta destino null");
+
+        }else if (this == contaDestino) {
+
+            System.out.println("conta destino invalido");
+
+        }else if (valor.compareTo(this.getSaldo()) > 0) {
+
+            System.out.println("Saldo insuficiente");
+
+        }else {
+
+            // Tira dinheiro
+            this.sacar(valor);
+
+            // colocar dinheiro
+            contaDestino.depositar(valor);
+
+            System.out.println("Transferencia realizada com sucesso");
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
