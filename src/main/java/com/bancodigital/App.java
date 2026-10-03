@@ -54,8 +54,7 @@ public class App {
 
         BigDecimal saldoInicial = new BigDecimal("1000.00");
 
-        Conta conta = new Conta
-                (1, "56886", "0001", saldoInicial, cliente);
+        Conta conta = new Conta(1, "56886", "0001", saldoInicial, cliente);
 
 
         banco.cadastrarConta(conta);
@@ -90,9 +89,75 @@ public class App {
         System.out.println(contaEncontrada.getSaldo());
 
         conta.sacar(new BigDecimal("0.00"));
-        System.out.println(contaEncontrada.getSaldo());
+         System.out.println(contaEncontrada.getSaldo());
 
         //_____________________________________________________________________________________//
+
+        // Adicionei um saldo inicial a conta Origem
+        BigDecimal saldoOrigem = new BigDecimal("1000.00");
+
+       Conta contaOrigem = new Conta( // Criei nova conta (objeto) contaOrigem
+
+               2,
+               "56498",
+               "0002",
+               saldoOrigem,
+               cliente
+       );
+
+       // Adicionei um saldo inicial a conta Destino
+       BigDecimal saldoDestino = new BigDecimal("500.00");
+
+       Conta contaDestino = new Conta( // Criei nova conta (objeto) contaDestino
+
+               1,
+               "56886",
+               "0001",
+               saldoDestino,
+               cliente
+       );
+
+       banco.cadastrarConta(contaOrigem); // Cadastrei nova conta (contaOrigem)
+       banco.cadastrarConta(contaDestino); // Cadastrei nova conta (contaDestino)
+
+        // CONSULTA
+        System.out.println(banco.consultarConta(contaDestino.getId()));
+
+        // CONSULTA
+        System.out.println(banco.consultarConta(contaOrigem.getId()));
+
+        // CONSULTA SALDO
+        System.out.println("contaOrigem: " + contaOrigem.getSaldo());
+
+        // CONSULTA SALDO
+        System.out.println("contaDestino:" + contaDestino.getSaldo());
+
+
+        // TRANSFERÊNCIA VÁLIDA
+        contaOrigem.transferir(contaDestino, BigDecimal.valueOf(200));
+
+        System.out.println("contaDestino: " + contaDestino.getSaldo());
+        System.out.println("contaOrigem: " + contaOrigem.getSaldo());
+
+        // VALOR 0,00
+        contaOrigem.transferir(contaDestino, BigDecimal.valueOf(0));
+
+        // VALOR NEGATIVO
+        contaOrigem.transferir(contaDestino, BigDecimal.valueOf(-100.00));
+
+        // CONTA DESTINO NULL
+        contaOrigem.transferir(null, BigDecimal.valueOf(100));
+
+        // PRÓPRIA conta
+        contaOrigem.transferir(contaOrigem, BigDecimal.valueOf(200));
+
+        // SALDO INSUFICIENTE
+        contaOrigem.transferir(contaDestino, BigDecimal.valueOf(1500.00));
+
+        //____________________________________________________________________________________//
+
+
+
 
 
     }
