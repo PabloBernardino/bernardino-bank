@@ -1,11 +1,9 @@
 package com.bancodigital;
 
 import com.bancodigital.Conta.Conta;
+import com.bancodigital.Conta.StatusConta;
 import com.bancodigital.banco.Banco;
 import com.bancodigital.cliente.Cliente;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import java.math.BigDecimal;
 
@@ -103,6 +101,7 @@ public class App {
                "0002",
                saldoOrigem,
                cliente
+
        );
 
        // Adicionei um saldo inicial a conta Destino
@@ -115,6 +114,7 @@ public class App {
                "0001",
                saldoDestino,
                cliente
+
        );
 
        banco.cadastrarConta(contaOrigem); // Cadastrei nova conta (contaOrigem)
@@ -156,6 +156,34 @@ public class App {
 
         //____________________________________________________________________________________//
 
+        conta.bloquear();
+        System.out.println("Status da conta: " + conta.getStatus().toString());
+
+        contaOrigem.bloquear();
+        System.out.println("Status da conta origem: " + contaOrigem.getStatus().toString());
+
+        contaDestino.bloquear();
+        System.out.println("Status da conta destino: " + contaDestino.getStatus().toString());
+
+        //__________________________________________________________________________________________//
+
+        BigDecimal novoSaldo = new BigDecimal("1000.00");
+
+        Conta novaConta = new Conta(
+                5,
+                "88954",
+                "0005",
+                novoSaldo,
+                cliente
+        );
+
+        novaConta.bloquear();
+
+        System.out.println("Saldo antes: " + novaConta.getSaldo());
+
+        novaConta.depositar(new BigDecimal("2000.00"));
+
+        System.out.println("Saldo depois: " + novaConta.getSaldo());
 
 
 

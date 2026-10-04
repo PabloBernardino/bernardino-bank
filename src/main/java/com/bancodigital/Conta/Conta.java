@@ -11,6 +11,8 @@ public class Conta {
     private String agencia;
     private BigDecimal saldo;
     private Cliente cliente;
+    private StatusConta status;
+
 
     public Conta (int idInit, String numeroInit, String agenciaInit,
                   BigDecimal saldoInit, Cliente clienteInit) {
@@ -19,6 +21,8 @@ public class Conta {
         agencia = agenciaInit;
         saldo = saldoInit;
         cliente = clienteInit;
+        status = StatusConta.ATIVA;
+
 
     }
 
@@ -34,14 +38,24 @@ public class Conta {
 
     public void depositar(BigDecimal valor) {
 
-        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+        if (status == StatusConta.BLOQUEADA) { // Conta está bloqueada?
 
-            System.out.println("Valor invalido");
+            System.out.println("Status da conta: " + status.toString());
 
-        }else  {
+            return;
 
-            saldo = saldo.add(valor);
+        } else {
+
+            if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+
+                System.out.println("Valor invalido");
+
+            }else  {
+
+                saldo = saldo.add(valor);
+            }
         }
+
     }
 
     public void sacar(BigDecimal valor) {
@@ -87,10 +101,21 @@ public class Conta {
             System.out.println("Transferencia realizada com sucesso");
         }
 
-
-
-
     }
+
+    //_________________________________________________________________________________________//
+
+    public StatusConta getStatus() {return status;}
+
+    public void bloquear() {
+
+        this.status = StatusConta.BLOQUEADA;
+
+        if (this.status == StatusConta.BLOQUEADA) {
+            System.out.println("Conta bloqueada com sucesso");
+        }
+    }
+
 }
 
 
