@@ -233,6 +233,46 @@ public class App {
 
         //__________________________________________________________________________________________________//
 
+        System.out.println(novaConta2.getStatus().toString());
+
+        novaConta2.ativar();
+        System.out.println(novaConta2.getStatus().toString());
+
+        novaConta2.sacar(new BigDecimal("100.00"));
+
+        System.out.println("saldo atual: " + novaConta2.getSaldo());
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        //___________________________________________________________________________________________________//
+
+
+        BigDecimal novoSaldo_A = new BigDecimal("1000.00"); // novo saldo da conta A
+        Conta conta_A = new Conta(23, "56498", "0023", novoSaldo_A, cliente); // Nova conta A
+        System.out.println("Conta A: " + conta_A.getStatus().toString()); // Status da conta A
+
+
+        BigDecimal novoSaldo_B = new BigDecimal("500.00"); // Novo saldo da conta B
+        Conta conta_B = new Conta(24, "86954", "0024", novoSaldo_B, cliente); // Nova conta B
+        System.out.println("Conta B: " + conta_B.getStatus().toString()); // Status da conta B
+
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println(); // Pular Linha
+
+        conta_B.bloquear(); // Realizei o bloqueio da conta B
+        System.out.println("Conta B: " + conta_B.getStatus().toString()); // Mostrar status atual
+
+        conta_A.transferir(conta_B, BigDecimal.valueOf(100)); // Transferir 100,00 para a conta B bloquada
+
+        System.out.println("Saldo atual da Conta A: " + conta_A.getSaldo()); // SALDO ATUAL da conta A
+        System.out.println("Saldo atual da Conta B: " + conta_B.getSaldo()); // SALDO ATUAL da conta B
+
+
+
+
+
 
 
 

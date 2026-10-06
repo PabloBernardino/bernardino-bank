@@ -125,6 +125,15 @@ public class Conta {
         }
     }
 
+    public void ativar() {
+
+        this.status = StatusConta.ATIVA;
+
+        if (this.status == StatusConta.ATIVA) {
+            System.out.println("Conta ativa com sucesso");
+        }
+    }
+
 }
 
 
