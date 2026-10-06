@@ -269,6 +269,14 @@ public class App {
         System.out.println("Saldo atual da Conta A: " + conta_A.getSaldo()); // SALDO ATUAL da conta A
         System.out.println("Saldo atual da Conta B: " + conta_B.getSaldo()); // SALDO ATUAL da conta B
 
+        System.out.println();
+        System.out.println();
+
+        //__________________________________________________________________________________________________//
+
+
+
+
 
 
 
