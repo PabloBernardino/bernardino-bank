@@ -60,12 +60,21 @@ public class Conta {
 
     public void sacar(BigDecimal valor) {
 
-        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
-            System.out.println("Valor invalido");
-        } else if (valor.compareTo(saldo) > 0) {
-            System.out.println("Saldo insuficiente");
-        } else {
-            saldo = saldo.subtract(valor);
+        if (status == StatusConta.BLOQUEADA) {
+
+            System.out.println("Conta bloqueada. Saque não permitido.");
+
+            return;
+
+        }else  {
+
+            if (valor.compareTo(BigDecimal.ZERO) <= 0) {
+                System.out.println("Valor invalido");
+            } else if (valor.compareTo(saldo) > 0) {
+                System.out.println("Saldo insuficiente");
+            } else {
+                saldo = saldo.subtract(valor);
+            }
         }
 
     }

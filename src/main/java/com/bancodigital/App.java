@@ -18,11 +18,17 @@ public class App {
 
         Cliente cliente2 = new Cliente(3, "Alailton", "498.921.418-81", "pablopbernardino@gmail.com", "(11) 949092368");
 
+        System.out.println();
+        System.out.println();
+
         //_____________________________________________________________________________//
         Banco banco = new Banco();
 
         banco.cadastrarCliente(cliente); // Banco, cadastre este cliente.
         banco.cadastrarCliente(cliente1);
+
+        System.out.println();
+        System.out.println();
 
         //_____________________________________________________________________________//
         Cliente clienteEncontrado = banco.consultarCliente(cliente.getId());
@@ -33,6 +39,8 @@ public class App {
         System.out.println(clienteEncontrado.getTelefone().toString());
 
         System.out.println();
+        System.out.println();
+
 
         //__________________________________________________________________________________//
 
@@ -46,6 +54,8 @@ public class App {
         System.out.println(clienteEncontrado.getTelefone().toString());
 
         System.out.println();
+        System.out.println();
+
 
         //_________________________________________________________________________________//
 
@@ -69,6 +79,9 @@ public class App {
         conta.depositar(new BigDecimal("0.00"));
         conta.depositar(new BigDecimal("-500.00"));
 
+        System.out.println();
+        System.out.println();
+
         //_____________________________________________________________________________________//
 
         conta.sacar(new BigDecimal("100.00"));
@@ -87,7 +100,10 @@ public class App {
         System.out.println(contaEncontrada.getSaldo());
 
         conta.sacar(new BigDecimal("0.00"));
-         System.out.println(contaEncontrada.getSaldo());
+        System.out.println(contaEncontrada.getSaldo());
+
+        System.out.println();
+        System.out.println();
 
         //_____________________________________________________________________________________//
 
@@ -154,6 +170,9 @@ public class App {
         // SALDO INSUFICIENTE
         contaOrigem.transferir(contaDestino, BigDecimal.valueOf(1500.00));
 
+        System.out.println();
+        System.out.println();
+
         //____________________________________________________________________________________//
 
         conta.bloquear();
@@ -164,6 +183,9 @@ public class App {
 
         contaDestino.bloquear();
         System.out.println("Status da conta destino: " + contaDestino.getStatus().toString());
+
+        System.out.println();
+        System.out.println();
 
         //__________________________________________________________________________________________//
 
@@ -184,6 +206,33 @@ public class App {
         novaConta.depositar(new BigDecimal("2000.00"));
 
         System.out.println("Saldo depois: " + novaConta.getSaldo());
+
+        System.out.println();
+        System.out.println();
+
+        //________________________________________________________________________________________________//
+
+        BigDecimal novoSaldo2 = new BigDecimal("1000.00"); // Criei novo saldo
+
+        Conta novaConta2 = new Conta(10, "66658", "0008", novoSaldo2, cliente); // Criei nova conta
+
+        System.out.println("Saldo antes: " + novaConta2.getSaldo()); // Mostrei saldo
+
+        novaConta2.sacar(new BigDecimal("100.00")); // Saquei saldo
+
+        System.out.println("Saldo atual: " + novaConta2.getSaldo()); // Mostrei saldo atual
+
+        novaConta2.bloquear(); // Realizei o bloqueio da conta
+
+        novaConta2.sacar(new BigDecimal("100.00")); // Realizar novo saque
+
+        System.out.println("Saldo atual: " + novaConta2.getSaldo()); // Mostrar saque atual após bloqueio de conta
+
+        System.out.println();
+        System.out.println();
+
+        //__________________________________________________________________________________________________//
+
 
 
 
