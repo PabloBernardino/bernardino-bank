@@ -64,7 +64,7 @@ public class Conta {
 
             System.out.println("Conta bloqueada. Saque não permitido.");
 
-            return;
+            return; // Não vou continuar
 
         }else  {
 
@@ -83,23 +83,35 @@ public class Conta {
 
     public void transferir(Conta contaDestino, BigDecimal valor) {
 
-        if (valor.compareTo(BigDecimal.ZERO) <= 0) { //  Verificar se o valor da transferência é menor ou igual a zero.
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) { //  Valor é válido?
 
             System.out.println("Valor invalido");
 
-        }else if (contaDestino == null) { // Verificar se existe uma conta destino
+        }else if (contaDestino == null) { // Conta destino existe?
 
             System.out.println("Conta destino null");
 
-        }else if (this == contaDestino) { // Verificar se a conta origem e a conta destino são o mesmo objeto.
+        }else if (this == contaDestino) { // Conta origem e a conta destino são o mesmo objeto?
 
             System.out.println("conta destino invalido");
 
-        }else if (valor.compareTo(this.getSaldo()) > 0) { // Verificar se o valor da transferência é maior que o saldo disponível na conta origem.
+        }else if (this.status == StatusConta.BLOQUEADA) { // Conta Origem está BLOQUEADA?
+
+            System.out.println("Conta origem bloqueada! Transferência cancelada.");
+
+            return; // Não vou continuar
+
+        }else if (contaDestino.status == StatusConta.BLOQUEADA) { // Conta Destino está BLOQUEADA?
+
+            System.out.println("Conta destino bloqueada! Transferência cancelada.");
+
+            return; // Não vou continuar
+
+        }else if (valor.compareTo(this.getSaldo()) > 0) { // Origem possui saldo?
 
             System.out.println("Saldo insuficiente");
 
-        }else {
+        }else { // Movimenta o dinheiro
 
             // Tira dinheiro
             this.sacar(valor);
